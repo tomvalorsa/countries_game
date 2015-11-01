@@ -28,6 +28,7 @@
     "react": "^0.13.3",
     "redux": "^3.0.0",
     "style-loader": "^0.12.4",
+    "topojson": "^1.6.19",
     "webpack": "^1.12.2"
   },
   "devDependencies": {

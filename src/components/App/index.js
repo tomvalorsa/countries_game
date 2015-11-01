@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
 import styles from './index.css'
 import classnames from 'classnames'
-import { countries } from '../../data/countries.js'
 import { Search } from 'Search'
 
 export class App extends Component {
   state = {
-    countries: countries,
+    countries: this.props.countries,
     guess: '',
     correct: []
   }
@@ -23,15 +22,23 @@ export class App extends Component {
     this.setState({guess})
   }
 
+  handleCorrectGuess(correct, guess){
+    guess = guess.slice(0,1).toUpperCase() + guess.slice(1)
+    correct.push(guess)
+    this.setState({correct, guess: ''})
+  }
+
+  componentDidMount(){
+
+  }
+
   componentDidUpdate(){
     if (this.state.guess.length > 0) {
       let { correct, guess, countries } = this.state
       if (countries.indexOf(guess) > -1) {
         // find the right one, add it to correct array, or just capitalise the guess for now
         // will need to make a list of acceptable guesses for a country
-        guess = guess.slice(0,1).toUpperCase() + guess.slice(1)
-        correct.push(guess)
-        this.setState({correct, guess: ''})
+        this.handleCorrectGuess(correct, guess)
       }
     }
   }
