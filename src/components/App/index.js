@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import styles from './index.css'
 import classnames from 'classnames'
 import { Search } from 'Search'
+import { SVG } from 'SVG'
+import { WorldMap } from 'WorldMap'
 
 export class App extends Component {
   state = {
@@ -46,10 +48,17 @@ export class App extends Component {
   render(){
     return (
       <div className={styles.container}>
-        <Search guess={this.state.guess} setGuess={::this.setGuess} />
-        <ul>
-          {this.printCountries()}
-        </ul>
+        <div className={styles.search}>
+          <Search guess={this.state.guess} setGuess={::this.setGuess} />
+          <ul>
+            {this.printCountries()}
+          </ul>
+        </div>
+        <div className={styles.map}>
+          <SVG>
+            <WorldMap feature={this.props.feature} />
+          </SVG>
+        </div>
       </div>
     )
   }

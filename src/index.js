@@ -9,13 +9,15 @@ import WorldMap from './data/topo_worldMap.json'
 window.jQuery = window.$ = require("jquery")
 
 let loadApp = function(error, worldMap) {
-  let polygons = topojson.feature(worldMap, worldMap.objects['worldMap']).features
+  let feature = topojson.feature(worldMap, worldMap.objects['worldMap'])
 
   if (typeof document !== 'undefined'){
-    React.render(<App countries={countries} polygons={polygons} />, document.body)
+    React.render(<App countries={countries} feature={feature} />, document.body)
   }
 }
 
 queue()
   .defer(d3.json, WorldMap)
   .await(loadApp)
+
+// http://bost.ocks.org/mike/map/
