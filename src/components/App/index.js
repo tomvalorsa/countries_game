@@ -4,6 +4,7 @@ import classnames from 'classnames'
 import { Search } from 'Search'
 import { SVG } from 'SVG'
 import { WorldMap } from 'WorldMap'
+import { Score } from 'Score'
 
 export class App extends Component {
   state = {
@@ -53,6 +54,9 @@ export class App extends Component {
           <ul>
             {this.printCountries()}
           </ul>
+        </div>
+        <div className={styles.topRight}>
+          <Score correct={this.state.correct} />
         </div>
         <div className={styles.map}>
           <SVG>
