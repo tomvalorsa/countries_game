@@ -18,3 +18,6 @@ Based on Sporcle game
 - Add in acceptable guesses for certain countries (e.g. USA will still count for Unites States)
 - Add in a highscores system/score entry system (arcade style w/ 3 chars)
 - something to check out http://code.highcharts.com/mapdata/
+
+### Useful resources discovered:
+- Material design card shadow: https://medium.com/@Florian/freebie-google-material-design-shadow-helper-2a0501295a2d#.lsgp741f6

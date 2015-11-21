@@ -5,6 +5,8 @@ import { Search } from 'Search'
 import { SVG } from 'SVG'
 import { WorldMap } from 'WorldMap'
 import { Score } from 'Score'
+import { Card } from 'Card'
+import { Timer } from 'Timer'
 
 export class App extends Component {
   state = {
@@ -57,7 +59,10 @@ export class App extends Component {
           </ul>
         </div>
         <div className={styles.topRight}>
-          <Score correct={this.state.correct} />
+          <Card>
+            <Score correct={this.state.correct} />
+            <Timer />
+          </Card>
         </div>
         <div className={styles.map}>
           <SVG>

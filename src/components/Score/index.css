@@ -1,7 +1,24 @@
 .container {
-  height: 100px;
-  width: 100px;
+  position: relative;
+  height: 75%;
+  width: 100%;
   background-color: blue;
-  color: white;
-  text-align: center
+  text-align: center;
+  padding: 1em;
+}
+
+.textContainer {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.score {
+  color: #fff;
+  font-size: 60px;
+}
+
+.total {
+  color: #fff;
+  font-size: 25px;
 }
