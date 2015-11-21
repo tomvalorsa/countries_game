@@ -2,7 +2,6 @@
   position: relative;
   height: 75%;
   width: 100%;
-  background-color: #1abc9c;
   text-align: center;
   padding: 1em;
 }
@@ -14,11 +13,11 @@
 }
 
 .score {
-  color: #fff;
+  /*color: #fff;*/
   font-size: 60px;
 }
 
 .total {
-  color: #fff;
+  /*color: #fff;*/
   font-size: 25px;
 }

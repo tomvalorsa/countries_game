@@ -15,7 +15,8 @@ export class Timer extends Component {
         elapsed += '.0'
       }
 
-      React.findDOMNode(this.refs.time).innerText = elapsed
+      // Needs to be uncommented for use (also gets erratic the greater the time elapsed)
+      // React.findDOMNode(this.refs.time).innerText = elapsed
 
       let diff = (new Date().getTime() - start) - time
       window.setTimeout(instance, (100 - diff)) // Set interval to remove inaccuracy
