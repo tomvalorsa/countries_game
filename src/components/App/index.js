@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
 import styles from './index.css'
 import classnames from 'classnames'
+import { capitalise } from 'util'
+
 import { Search } from 'Search'
 import { SVG } from 'SVG'
 import { WorldMap } from 'WorldMap'
 import { Score } from 'Score'
 import { Card } from 'Card'
 import { Timer } from 'Timer'
+import { Sidebar } from 'Sidebar'
 
 export class App extends Component {
   state = {
@@ -28,8 +31,7 @@ export class App extends Component {
   }
 
   handleCorrectGuess(correct, guess){
-    // needs to capitalise all words here, not just the first
-    guess = guess.slice(0,1).toUpperCase() + guess.slice(1)
+    guess = capitalise(guess)
     correct.push(guess)
     this.setState({correct, guess: ''})
   }
@@ -52,11 +54,13 @@ export class App extends Component {
   render(){
     return (
       <div className={styles.container}>
-        <div className={styles.topLeft}>
-          <Search guess={this.state.guess} setGuess={::this.setGuess} />
-          <ul>
-            {this.printCountries()}
-          </ul>
+        <div className={styles.sidebarContainer}>
+          <Sidebar>
+            <Search guess={this.state.guess} setGuess={::this.setGuess} />
+            <ul style={{marginTop:'20px'}}>
+              {this.printCountries()}
+            </ul>
+          </Sidebar>
         </div>
         <div className={styles.topRight}>
           <Card>
