@@ -1,7 +1,7 @@
 {
   "name": "countries_game",
   "version": "1.0.0",
-  "description": "Guess the countries of the world (based on Sporcle game)",
+  "description": "Guess the countries of the world (inspired by Sporcle game)",
   "main": "webpack.config.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

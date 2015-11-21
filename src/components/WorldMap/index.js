@@ -43,7 +43,7 @@ export class WorldMap extends Component {
         onMouseOver={this.hover.bind(this, name)}
         d={path(polygons[i])}
         stroke="#606060"
-        fill={correct.indexOf(name) > -1 ? 'red' : '#eee'}/>)
+        fill={correct.indexOf(name) > -1 ? '#66BB6A' : '#eee'}/>)
     }
 
     return <g>{countries}</g>
