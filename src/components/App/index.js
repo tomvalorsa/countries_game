@@ -16,7 +16,7 @@ export class App extends Component {
   printCountries(){
     let countries = []
     this.state.correct.forEach((d, i) => {
-      countries.push(<li key={i}>{d}</li>)
+      countries.push(<li key={i} className={styles.correct}>{d}</li>)
     })
     return countries
   }
@@ -26,6 +26,7 @@ export class App extends Component {
   }
 
   handleCorrectGuess(correct, guess){
+    // needs to capitalise all words here, not just the first
     guess = guess.slice(0,1).toUpperCase() + guess.slice(1)
     correct.push(guess)
     this.setState({correct, guess: ''})
@@ -49,7 +50,7 @@ export class App extends Component {
   render(){
     return (
       <div className={styles.container}>
-        <div className={styles.search}>
+        <div className={styles.topLeft}>
           <Search guess={this.state.guess} setGuess={::this.setGuess} />
           <ul>
             {this.printCountries()}
@@ -60,7 +61,7 @@ export class App extends Component {
         </div>
         <div className={styles.map}>
           <SVG>
-            <WorldMap feature={this.props.feature} />
+            <WorldMap correct={this.state.correct} feature={this.props.feature} />
           </SVG>
         </div>
       </div>

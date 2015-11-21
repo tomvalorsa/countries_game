@@ -10,7 +10,7 @@ export class WorldMap extends Component {
     console.log(name)
   }
   render(){
-    let { feature, width, height } = this.props
+    let { feature, width, height, correct } = this.props
     let projection = d3.geo.mercator()
       .scale(1)
       .translate([0,0])
@@ -37,7 +37,13 @@ export class WorldMap extends Component {
     let countries = []
     for (let i = 0; i < polygons.length; i++) {
       let name = polygons[i].properties.name
-      countries.push(<path key={`${i}-name`} onClick={this.click.bind(this, name)} onMouseOver={this.hover.bind(this, name)} d={path(polygons[i])} stroke="blue" fill="lightgrey" />)
+      countries.push(<path
+        key={`${i}-name`}
+        onClick={this.click.bind(this, name)}
+        onMouseOver={this.hover.bind(this, name)}
+        d={path(polygons[i])}
+        stroke="#606060"
+        fill={correct.indexOf(name) > -1 ? 'red' : '#eee'}/>)
     }
 
     return <g>{countries}</g>

@@ -1,7 +1,10 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,700);
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
 }
 
 .container {
@@ -15,12 +18,19 @@
   left: 0;
   height: 100vh;
   width: 100vw;
-  background-color: lightblue;
+  background-color: #9AC7E6;
 }
 
-.search {
-  position: relative;
+.topLeft {
+  position: absolute;
+  top: 20px;
+  left: 20px;
   z-index: 2;
+
+  input {
+    margin-bottom: 4px;
+    padding: 5px 0;
+  }
 }
 
 .topRight {
@@ -28,4 +38,12 @@
   top: 20px;
   right: 20px;
   z-index: 2;
+}
+
+.correct {
+  background-color: white;
+  padding: 5px 0;
+  margin-bottom: 2px;
+  list-style: none;
+  text-align: center;
 }
