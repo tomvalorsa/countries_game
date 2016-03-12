@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
 import styles from './index.css'
 
 export class SVG extends Component {
@@ -18,7 +19,7 @@ export class SVG extends Component {
     this.update()
   }
   update(){
-    let { width, height } = React.findDOMNode(this).getBoundingClientRect()
+    let { width, height } = ReactDOM.findDOMNode(this).getBoundingClientRect()
     if (this.state.width !== width || this.state.height !== height) {
       this.setState({width, height})
     }

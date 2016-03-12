@@ -9,7 +9,6 @@ import { WorldMap } from 'WorldMap'
 import { Score } from 'Score'
 import { Card } from 'Card'
 import { Timer } from 'Timer'
-import { Sidebar } from 'Sidebar'
 
 export class App extends Component {
   state = {
@@ -18,29 +17,12 @@ export class App extends Component {
     correct: []
   }
 
-  printCountries(){
-    let countries = []
-    this.state.correct.forEach((d, i) => {
-      countries.push(<li key={i} className={styles.correct}>{d}</li>)
-    })
-    return countries
+  componentDidMount() {
+    this.setDynamicHeight()
   }
 
-  setGuess(guess){
-    this.setState({guess})
-  }
-
-  handleCorrectGuess(correct, guess){
-    guess = capitalise(guess)
-    correct.push(guess)
-    this.setState({correct, guess: ''})
-  }
-
-  componentDidMount(){
-
-  }
-
-  componentDidUpdate(){
+  componentDidUpdate() {
+    this.setDynamicHeight()
     if (this.state.guess.length > 0) {
       let { correct, guess, countries } = this.state
       if (countries.indexOf(guess) > -1) {
@@ -51,24 +33,44 @@ export class App extends Component {
     }
   }
 
-  render(){
+  setDynamicHeight() {
+    let { timer, search, correctGuesses } = this.refs
+    debugger
+  }
+
+  printCountries() {
+    let countries = []
+    this.state.correct.forEach((d, i) => {
+      countries.push(<li key={i} className={styles.correct}>{d}</li>)
+    })
+    return countries
+  }
+
+  setGuess(guess) {
+    this.setState({guess})
+  }
+
+  handleCorrectGuess(correct, guess){
+    guess = capitalise(guess)
+    correct.push(guess)
+    this.setState({correct, guess: ''})
+  }
+
+  render() {
     return (
       <div className={styles.container}>
         <div className={styles.sidebarContainer}>
-          <Sidebar>
-            <Search guess={this.state.guess} setGuess={::this.setGuess} />
-            <ul style={{marginTop:'20px'}}>
-              {this.printCountries()}
-            </ul>
-          </Sidebar>
-        </div>
-        <div className={styles.topRight}>
-          <Card>
-            <Score correct={this.state.correct} />
+          <div ref="timer" className={styles.timerContainer}>
             <Timer />
-          </Card>
+          </div>
+          <div ref="search" className={styles.searchContainer}>
+            <Search setGuess={::this.setGuess} guess={this.state.guess} />
+          </div>
+          <div ref="correctGuesses" className={styles.correctGuesses}>
+            {this.printCountries()}
+          </div>
         </div>
-        <div className={styles.map}>
+        <div className={styles.mapContainer}>
           <SVG>
             <WorldMap correct={this.state.correct} feature={this.props.feature} />
           </SVG>
