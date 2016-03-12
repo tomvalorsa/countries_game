@@ -29,3 +29,6 @@ export class Timer extends Component {
     )
   }
 }
+
+
+// http://jsfiddle.net/andsens/mLA7X/
