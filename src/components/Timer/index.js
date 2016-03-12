@@ -4,7 +4,7 @@ import moment from 'moment'
 
 export class Timer extends Component {
   componentDidMount() {
-    this.setCountdown()
+    // this.setCountdown()
   }
 
   setCountdown() {

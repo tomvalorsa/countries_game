@@ -6,9 +6,8 @@ import { capitalise } from 'util'
 import { Search } from 'Search'
 import { SVG } from 'SVG'
 import { WorldMap } from 'WorldMap'
-import { Score } from 'Score'
-import { Card } from 'Card'
 import { Timer } from 'Timer'
+import { ProgressBar } from 'ProgressBar'
 
 export class App extends Component {
   state = {
@@ -34,10 +33,11 @@ export class App extends Component {
   }
 
   setDynamicHeight() {
-    let { timer, search, correctGuesses } = this.refs
+    let { timer, search, correctGuesses, progressBar } = this.refs
     let searchHeight = search.getBoundingClientRect().height
     let timerHeight = timer.getBoundingClientRect().height
-    let correctGuessesHeight = `calc(100vh - ${searchHeight}px - ${timerHeight}px);`
+    let progressBarHeight = progressBar.getBoundingClientRect().height
+    let correctGuessesHeight = `calc(100vh - ${searchHeight}px - ${timerHeight}px - ${progressBarHeight}px);`
     correctGuesses.setAttribute('style', `height: ${correctGuessesHeight}`)
   }
 
@@ -77,6 +77,9 @@ export class App extends Component {
           <SVG>
             <WorldMap correct={this.state.correct} feature={this.props.feature} />
           </SVG>
+        </div>
+        <div ref="progressBar" className={styles.progressBarContainer}>
+          <ProgressBar correct={this.state.correct} />
         </div>
       </div>
     )

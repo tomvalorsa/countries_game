@@ -6,7 +6,7 @@
 .sidebarContainer {
   vertical-align: top;
   display: inline-block;
-  height: 100vh;
+  height: calc(100vh - 40px);
   width: 200px;
 }
 
@@ -17,19 +17,19 @@
 
 .searchContainer {
   width: 100%;
-  padding: 0 10px;
+  padding: 0 10px 10px 10px;
 }
 
 .mapContainer {
   vertical-align: top;
   display: inline-block;
-  height: 100vh;
+  height: calc(100vh - 40px);
   width: calc(100vw - 200px);
   background-color: #B3E5FC;
 }
 
 .correctGuesses {
-  padding: 10px 10px 0 10px;
+  padding: 0 10px;
   overflow-y: auto;
 }
 
@@ -43,4 +43,11 @@
   &:hover {
     color: red;
   }
+}
+
+.progressBarContainer {
+  position: rel;
+  height: 40px;
+  width: 100vw;
+  background-color: steelblue;
 }
