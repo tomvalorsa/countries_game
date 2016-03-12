@@ -35,7 +35,10 @@ export class App extends Component {
 
   setDynamicHeight() {
     let { timer, search, correctGuesses } = this.refs
-    debugger
+    let searchHeight = search.getBoundingClientRect().height
+    let timerHeight = timer.getBoundingClientRect().height
+    let correctGuessesHeight = `calc(100vh - ${searchHeight}px - ${timerHeight}px);`
+    correctGuesses.setAttribute('style', `height: ${correctGuessesHeight}`)
   }
 
   printCountries() {

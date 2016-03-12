@@ -3,14 +3,14 @@ import styles from './index.css'
 
 export class Search extends Component {
   handleInput(){
-    let input = this.refs.search.getDOMNode()
+    let input = this.refs.search
     let guess = input.value
     this.props.setGuess(guess)
   }
 
   componentDidUpdate(){
     if (this.props.guess === '') {
-      let input = this.refs.search.getDOMNode()
+      let input = this.refs.search
       input.value = ''
     }
   }
