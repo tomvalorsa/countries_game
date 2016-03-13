@@ -35,11 +35,9 @@ export default function(state = initialState, action) {
       }
     case 'ADD_CORRECT_GUESS':
       let correctGuess = action.payload
-      let updatedCorrect = state.correct
-      updatedCorrect.push(correctGuess)
       return {
         ...state,
-        correct: updatedCorrect
+        correct: [...state.correct, correctGuess]
       }
     case 'SET_FORFEIT':
       return {

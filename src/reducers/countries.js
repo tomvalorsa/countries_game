@@ -26,9 +26,9 @@ export default function(state = initialState, action) {
       }
     case 'UPDATE_REMAINING_COUNTRIES':
       let guess = action.payload
-      let leftOver = state.remainingCountries
-      let index = leftOver.indexOf(guess)
-      leftOver.splice(index, 1)
+      let remaining = state.remainingCountries
+      let index = remaining.indexOf(guess)
+      let leftOver = remaining.slice(0, index).concat(remaining.slice(index + 1))
       return {
         ...state,
         remainingCountries: leftOver
