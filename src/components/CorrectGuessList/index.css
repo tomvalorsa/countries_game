@@ -1,0 +1,11 @@
+.correct {
+  list-style: none;
+  text-align: center;
+  border: 1px solid purple;
+  padding: 5px;
+  margin-bottom: 2px;
+
+  &:hover {
+    color: red;
+  }
+}

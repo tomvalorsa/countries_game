@@ -9,8 +9,11 @@ import { SVG } from 'SVG'
 import { WorldMap } from 'WorldMap'
 import { Timer } from 'Timer'
 import { ProgressBar } from 'ProgressBar'
+import { CorrectGuessList } from 'CorrectGuessList'
 
-@connect(state => ({}), {loadCountries})
+@connect(state => ({
+  countries: state.countries.data
+}), {loadCountries})
 export class App extends Component {
   componentDidMount() {
     this.props.loadCountries()
@@ -19,14 +22,6 @@ export class App extends Component {
 
   componentDidUpdate() {
     this.setDynamicHeight()
-    if (this.state.guess.length > 0) {
-      let { correct, guess, countries } = this.state
-      if (countries.indexOf(guess) > -1) {
-        // find the right one, add it to correct array, or just capitalise the guess for now
-        // will need to make a list of acceptable guesses for a country
-        this.handleCorrectGuess(correct, guess)
-      }
-    }
   }
 
   setDynamicHeight() {
@@ -38,24 +33,6 @@ export class App extends Component {
     correctGuesses.setAttribute('style', `height: ${correctGuessesHeight}`)
   }
 
-  printCountries() {
-    let countries = []
-    this.state.correct.forEach((d, i) => {
-      countries.push(<li key={i} className={styles.correct}>{d}</li>)
-    })
-    return countries
-  }
-
-  setGuess(guess) {
-    this.setState({guess})
-  }
-
-  handleCorrectGuess(correct, guess){
-    guess = capitalise(guess)
-    correct.push(guess)
-    this.setState({correct, guess: ''})
-  }
-
   render() {
     return (
       <div className={styles.container}>
@@ -64,19 +41,19 @@ export class App extends Component {
             <Timer />
           </div>
           <div ref="search" className={styles.searchContainer}>
-            <Search setGuess={::this.setGuess} guess={this.state.guess} />
+            <Search />
           </div>
           <div ref="correctGuesses" className={styles.correctGuesses}>
-            {this.printCountries()}
+            <CorrectGuessList />
           </div>
         </div>
         <div className={styles.mapContainer}>
           <SVG>
-            <WorldMap correct={this.state.correct} feature={this.props.feature} />
+            <WorldMap />
           </SVG>
         </div>
         <div ref="progressBar" className={styles.progressBarContainer}>
-          <ProgressBar correct={this.state.correct} />
+          <ProgressBar />
         </div>
       </div>
     )

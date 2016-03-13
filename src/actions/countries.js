@@ -17,3 +17,10 @@ export const loadCountries = () => (dispatch, getState) => {
     })
   }
 }
+
+export const updateRemainingCountries = (guess) => (dispatch, getState) => {
+  dispatch({
+    type: 'UPDATE_REMAINING_COUNTRIES',
+    payload: guess
+  })
+}

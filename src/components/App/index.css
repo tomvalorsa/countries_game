@@ -33,21 +33,8 @@
   overflow-y: auto;
 }
 
-.correct {
-  list-style: none;
-  text-align: center;
-  border: 1px solid purple;
-  padding: 5px;
-  margin-bottom: 2px;
-
-  &:hover {
-    color: red;
-  }
-}
-
 .progressBarContainer {
-  position: rel;
+  position: relative;
   height: 40px;
   width: 100vw;
-  background-color: steelblue;
 }
