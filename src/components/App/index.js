@@ -2,21 +2,18 @@ import React, { Component } from 'react'
 import styles from './index.css'
 import classnames from 'classnames'
 import { capitalise } from 'util'
-
+import { connect } from 'react-redux'
+import { loadCountries } from 'actions/countries'
 import { Search } from 'Search'
 import { SVG } from 'SVG'
 import { WorldMap } from 'WorldMap'
 import { Timer } from 'Timer'
 import { ProgressBar } from 'ProgressBar'
 
+@connect(state => ({}), {loadCountries})
 export class App extends Component {
-  state = {
-    countries: this.props.countries,
-    guess: '',
-    correct: []
-  }
-
   componentDidMount() {
+    this.props.loadCountries()
     this.setDynamicHeight()
   }
 
